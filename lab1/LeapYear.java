@@ -14,6 +14,31 @@ public class LeapYear {
         }
     }
 
+
+	/**Method isLeapYear,test wheather the parameter "year" which passed in 
+	 *	is leap year or not;
+	 *	If it is a leap year,the method returns "true",else returns "false";
+	 *	A leap year is either:
+	 *
+	 *  divisible by 400 or
+	 *	divisible by 4 and not by 100.
+	*/
+	public static boolean isLeapYear(int year){
+		boolean flag = false;
+
+		if (year % 400 == 0)
+		{
+			flag = true;
+		}
+		else if (year % 4 == 0 && year % 100 != 0)
+		{
+			flag = true;
+		}
+		return flag;
+	}
+
+
+
     /** Must be provided an integer as a command line argument ARGS. */
     public static void main(String[] args) {
         if (args.length < 1) {
