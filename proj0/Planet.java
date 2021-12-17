@@ -9,10 +9,10 @@ public class Planet
 		public double xxVel;
 		public double yyVel;
 		public double mass;  //zhi liang
-		String imgFileName;
+		public String imgFileName;
 
 		////scientific notation
-		static final double G = 6.67e-11;     
+		private static final double G = 6.67e-11;     
 
 		// 2 Body constructors that can initialize an instance of the Body class
 		public Planet(double xP,double yP,double xV,double yV,

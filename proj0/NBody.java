@@ -62,7 +62,7 @@ public class NBody
 			//Draw the background image.
 			StdDraw.setXscale(-2 * radius,2 * radius);
 			StdDraw.setYscale(-2 * radius,2 * radius);
-			StdDraw.picture(0,0,"images/starfield.jpg");
+			StdDraw.picture(0,0,"starfield.jpg");
 
 			//Draw all of the planets.
 			
@@ -124,7 +124,8 @@ public class NBody
 					double xV = in.readDouble();
 					double yV = in.readDouble();
 					double m = in.readDouble();
-					String imgFileName = "images/" + in.readString();
+					//String imgFileName = "images/" + in.readString();
+					String imgFileName = in.readString();
 
 					ppp[i] = new Planet(xP,yP,xV,yV,m,imgFileName);
 				}
