@@ -121,19 +121,19 @@ public class Planet
 				}
 			
 			//Write a method  *update(dt, fX, fY) 
-			//that uses the steps above to update the planet¡¯s position and velocity instance variables
+			//that uses the steps above to update the planet's position and velocity instance variables
 			//(this method does not need to return anything).
 			public void update(double dt,double fX,double fY)
 				{
-					//¢Ùcalculate the ax and ay
+					//calculate the ax and ay
 					double aX = fX / mass;
 					double aY = fY / mass;
 
-					//¢Úcalculate the new velocity in x- and y-
+					//calculate the new velocity in x- and y-
 					this.xxVel = this.xxVel + aX * dt;
 					this.yyVel = this.yyVel + aY * dt;
 
-					//¢ÛCalculate the new position 
+					//Calculate the new position 
 					this.xxPos = this.xxPos + dt * xxVel;
 					this.yyPos = this.yyPos + dt * yyVel;
 
@@ -141,7 +141,7 @@ public class Planet
 				}
 
 			//  *draw    
-			//uses the StdDraw API to draw the Planet¡¯s image at the Planet¡¯s position. 
+			//uses the StdDraw API to draw the Planet's image at the Planet's position. 
 			//The draw method should return nothing and take in no parameters.
 			public void draw()
 				{

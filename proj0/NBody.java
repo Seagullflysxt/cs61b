@@ -53,7 +53,7 @@ public class NBody
 					xForces[i] = planets[i].calcNetForceExertedByX(planets);
 					yForces[i] = planets[i].calcNetForceExertedByY(planets);
 				}
-			//Call update on each of the planets. This will update each planet¡¯s position, velocity, and acceleration.
+			//Call update on each of the planets. This will update each planet's position, velocity,and acceleration.
 			for(int i = 0; i < l ; i++)
 				{
 					planets[i].update(dt,xForces[i],yForces[i]);
