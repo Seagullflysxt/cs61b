@@ -70,6 +70,13 @@ public class IntList {
         }
         return new IntList(L.first * L.first, squareListRecursive(L.rest));
     }
+    public static IntList copyOfList(IntList L) {
+        if (L == null) {
+            return null;
+        }
+        return new IntList(L.first, copyOfList(L.rest));
+    }
+
 
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
 
@@ -81,7 +88,39 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        /**IntList res= new IntList(A.first,null);
+        IntList ptr = res;
+        A = A.rest;
+        while (A!= null)
+        {
+            ptr.rest = new IntList(A.first,null);
+            A = A.rest;
+            ptr= ptr.rest;
+
+        }
+        while(B.rest != null)
+        {
+
+            ptr.rest = new IntList(B.first,null);
+            B = B.rest;
+            ptr = ptr.rest;
+
+        }
+        return res ;*/
+        IntList ptr = A;
+        while (ptr.rest != null)
+        {
+            ptr = ptr.rest;
+        }
+        while(B.rest != null)
+        {
+            ptr.rest = new IntList(B.first, null);
+            B = B.rest;
+            ptr = ptr.rest;
+        }
+        ptr.rest = new IntList(B.first, null);
+
+        return A;
     }
 
     /**
@@ -90,8 +129,27 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList res = copyOfList(A);
+
+        IntList ptr = res;
+        while (ptr.rest != null)
+        {
+            ptr = ptr.rest;
+        }
+        while (B.rest != null)
+        {
+            ptr.rest = new IntList(B.first, null);
+            B = B.rest;
+            ptr = ptr.rest;
+        }
+        ptr.rest = new IntList(B.first, null);
+
+        return res;
     }
+
+
+
+
 
 
 
