@@ -137,21 +137,32 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        IntList res = copyOfList(A);
-
-        IntList ptr = res;
-        while (ptr.rest != null)
+        IntList res = A;
+        if(A == null && B != null)
         {
-            ptr = ptr.rest;
+             res = B;
         }
-        while (B.rest != null)
+        else if(A != null && B == null)
+        {}
+        else if(A == null && B == null)
+        {}
+        else if(A != null && B != null)
         {
+             res = copyOfList(A);
+
+            IntList ptr = res;
+            while (ptr.rest != null)
+            {
+                ptr = ptr.rest;
+            }
+            while (B.rest != null)
+            {
+                ptr.rest = new IntList(B.first, null);
+                B = B.rest;
+                ptr = ptr.rest;
+            }
             ptr.rest = new IntList(B.first, null);
-            B = B.rest;
-            ptr = ptr.rest;
         }
-        ptr.rest = new IntList(B.first, null);
-
         return res;
     }
 
