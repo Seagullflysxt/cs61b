@@ -31,7 +31,8 @@ public class LinkedListDeque<T> {
     /**Adds an item of type T to the front of the deque.*/
     public void addFirst(T item) {
         sentinel.next = new TNode(sentinel, item, sentinel.next);
-        sentinel.prev.prev = sentinel.next;
+        sentinel.next.next.prev = sentinel.next;
+        //sentinel.prev.prev = sentinel.next;
         size += 1;
     }
     /**Adds an item of type T to the back of the deque.*/
@@ -122,18 +123,19 @@ public class LinkedListDeque<T> {
         return getRecursive(index, this.sentinel.next);
     }
 
-/*    public static void main(String[] args) {
-        LinkedListDeque<Integer> l1 = new LinkedListDeque<>(2);
-        l1.addFirst(3);
-        l1.addLast(4);
-        l1.printDeque();
-        *//*int removedf = l1.removeFirst();
-        System.out.println("removed first: " + removedf);
-        l1.printDeque();
-        int removedl = l1.removeLast();
-        System.out.println("removed last: " + removedl);
-        l1.printDeque();*//*
-        int what = l1.getRecursive(2);
-        System.out.println(what);
-    }*/
+   public static void main(String[] args) {
+        LinkedListDeque<Integer> l1 = new LinkedListDeque<>();
+        l1.addFirst(1);
+        l1.addFirst(2);
+        l1.addFirst(4);
+        l1.addFirst(5);
+        l1.addFirst(6);
+        //l1.printDeque();
+        int i = l1.removeLast();
+        l1.addFirst(8);
+        l1.addFirst(9);
+        l1.addFirst(10);
+        l1.removeLast();
+
+    }
 }
