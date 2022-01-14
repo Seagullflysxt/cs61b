@@ -16,12 +16,12 @@ public class LinkedListDeque<T> {
     private int size;
 
     //constructor of LinkedListDeque
-    public LinkedListDeque(T x) {
+    /*public LinkedListDeque(T x) {
         sentinel = new TNode(null, (T) "A", null);
         sentinel.next = new TNode(sentinel, x, sentinel);
         sentinel.prev = sentinel.next;
         size = 1;
-    }
+    }*/
     public LinkedListDeque() {
         sentinel = new TNode(sentinel, (T) "A", sentinel);
         sentinel.next = sentinel;
@@ -81,7 +81,7 @@ public class LinkedListDeque<T> {
     /**Removes and returns the item at the back of the deque.
      * If no such item exists, returns null.*/
     public T removeLast() {
-        if (sentinel.next == sentinel.prev) {
+        if (size == 0) {
             return null;
         }
         T temp = sentinel.prev.item;
@@ -109,7 +109,7 @@ public class LinkedListDeque<T> {
     }
     /**Same as get, but uses recursion.
      * Needs a helper method!!!*/
-    public T getRecursive(int index, TNode current) {
+    private T getRecursive(int index, TNode current) {
         if (index == 0) {
             return current.item;
         }

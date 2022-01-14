@@ -92,7 +92,7 @@ public class ArrayDeque<T> {
         return size;
     }
     /**prints the items in the deque from first to last, separated by a space.*/
-    public T[] orderdDeque() {
+    private T[] orderdDeque() {
         T[] orderd = (T[]) new Object[size];
         int index = addOne(nextFirst);
         for (int i = 0; i < size; i++) {
