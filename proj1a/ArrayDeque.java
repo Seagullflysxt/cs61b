@@ -152,14 +152,14 @@ public class ArrayDeque<T> {
         return items[ptr];
     }
 
-    public static void main(String[] args) {
+    /**public static void main(String[] args) {
         ArrayDeque<Integer> ad = new ArrayDeque<>();
         /*for (int i = 0; i < 17; i++) {
             ad.addLast(i + 2);
         }
         for (int i = 0; i < 15; i++) {
             ad.removeLast();
-        }*/
+        }
         ad.addLast(0);
         ad.addFirst(1);
         ad.addFirst(2);
@@ -187,5 +187,5 @@ public class ArrayDeque<T> {
         //ad.removeLast();
         //ad.printDeque();
         //System.out.println(ad.get(1));
-    }
+    }*/
 }
