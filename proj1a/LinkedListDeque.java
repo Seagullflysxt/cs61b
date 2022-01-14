@@ -123,7 +123,7 @@ public class LinkedListDeque<T> {
         return getRecursive(index, this.sentinel.next);
     }
 
-   public static void main(String[] args) {
+   /**public static void main(String[] args) {
         LinkedListDeque<Integer> l1 = new LinkedListDeque<>();
         l1.addFirst(1);
         l1.addFirst(2);
@@ -137,5 +137,5 @@ public class LinkedListDeque<T> {
         l1.addFirst(10);
         l1.removeLast();
 
-    }
+    }*/
 }
