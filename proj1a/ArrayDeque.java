@@ -150,8 +150,8 @@ public class ArrayDeque<T> {
         return items[ptr];
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> ad = new ArrayDeque<>();
+    //public static void main(String[] args) {
+        //ArrayDeque<Integer> ad = new ArrayDeque<>();
         /**for (int i = 0; i < 17; i++) {
             ad.addLast(i + 2);
         }
@@ -179,7 +179,7 @@ public class ArrayDeque<T> {
         ad.addFirst(18);
         int i7 = ad.removeFirst();
         int i8 = ad.removeLast();*/
-        for(int i = 0; i < 17; i++){
+        /*for(int i = 0; i < 17; i++){
             ad.addFirst(i);
         }
         for(int i = 0; i < 16; i++){
@@ -187,7 +187,7 @@ public class ArrayDeque<T> {
         }
         for(int i = 0; i < 16; i++){
             ad.addFirst(i+1);
-        }
+        }*/
 
 
         //ad.printDeque();
