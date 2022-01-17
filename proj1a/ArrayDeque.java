@@ -56,10 +56,11 @@ public class ArrayDeque<T> {
         }
     }
     private void resize(int capacity) {
-        T[] a = (T[]) new Object[capacity];
-        System.arraycopy(this.items, 0, a, 0, size);
-        items = a;
-        nextFirst = items.length - 1;
+        T[] a, b = (T[]) new Object[capacity];
+        a = orderdDeque();
+        System.arraycopy(a, 0, b, 0, size);
+        items = b;
+        nextFirst =items.length - 1;
         nextLast = size;
     }
     /**Adds an item of type T to the front of the deque*/
@@ -152,14 +153,14 @@ public class ArrayDeque<T> {
         return items[ptr];
     }
 
-    /**public static void main(String[] args) {
+    public static void main(String[] args) {
         ArrayDeque<Integer> ad = new ArrayDeque<>();
-        /*for (int i = 0; i < 17; i++) {
+        /**for (int i = 0; i < 17; i++) {
             ad.addLast(i + 2);
         }
         for (int i = 0; i < 15; i++) {
             ad.removeLast();
-        }
+        }*/
         ad.addLast(0);
         ad.addFirst(1);
         ad.addFirst(2);
@@ -187,5 +188,5 @@ public class ArrayDeque<T> {
         //ad.removeLast();
         //ad.printDeque();
         //System.out.println(ad.get(1));
-    }*/
+    }
 }
