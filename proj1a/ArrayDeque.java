@@ -150,36 +150,10 @@ public class ArrayDeque<T> {
         return items[ptr];
     }
 
-    //public static void main(String[] args) {
-        //ArrayDeque<Integer> ad = new ArrayDeque<>();
-        /**for (int i = 0; i < 17; i++) {
-            ad.addLast(i + 2);
-        }
-        for (int i = 0; i < 15; i++) {
-            ad.removeLast();
-        }*/
-        /*ad.addLast(0);
-        ad.addFirst(1);
-        ad.addFirst(2);
-        ad.addLast(3);
-        int i1 = ad.get(2);
-        ad.addLast(5);
-        int i2 = ad.removeLast();
-        int i3 = ad.removeFirst();
-        ad.addFirst(8);
-        ad.addLast(9);
-        ad.addFirst(10);
-        ad.addFirst(11);
-        int i4 = ad.removeLast();
-        int i5 = ad.get(0);
-        ad.addLast(14);
-        ad.addLast(15);
-        int i6 = ad.removeLast();
-        ad.addFirst(17);
-        ad.addFirst(18);
-        int i7 = ad.removeFirst();
-        int i8 = ad.removeLast();*/
-        /*for(int i = 0; i < 17; i++){
+/*    public static void main(String[] args) {
+        ArrayDeque<Integer> ad = new ArrayDeque<>();
+
+        for(int i = 0; i < 17; i++){
             ad.addFirst(i);
         }
         for(int i = 0; i < 16; i++){
@@ -187,13 +161,6 @@ public class ArrayDeque<T> {
         }
         for(int i = 0; i < 16; i++){
             ad.addFirst(i+1);
-        }*/
-
-
-        //ad.printDeque();
-        //ad.removeFirst();
-        //ad.removeLast();
-        //ad.printDeque();
-        //System.out.println(ad.get(1));
-    }
+        }
+    }*/
 }
