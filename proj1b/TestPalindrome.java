@@ -32,23 +32,23 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIsPalindromeCC(){
+    public void testIsPalindromeCC() {
 
         CharacterComparator ofo = new OffByOne();
 
-        boolean actual1 = palindrome.isPalindrome("flake",ofo);
+        boolean actual1 = palindrome.isPalindrome("flake", ofo);
         assertTrue(actual1);
 
-        boolean actual2 = palindrome.isPalindrome("flakee",ofo);
+        boolean actual2 = palindrome.isPalindrome("flakee", ofo);
         assertFalse(actual2);
 
-        boolean actual3 = palindrome.isPalindrome("bflabkec",ofo);
+        boolean actual3 = palindrome.isPalindrome("bflabkec", ofo);
         assertTrue(actual3);
 
-        boolean actual4 = palindrome.isPalindrome("f",ofo);
+        boolean actual4 = palindrome.isPalindrome("f", ofo);
         assertTrue(actual4);
 
-        boolean actual5 = palindrome.isPalindrome("",ofo);
+        boolean actual5 = palindrome.isPalindrome("", ofo);
         assertTrue(actual5);
     }
 }
