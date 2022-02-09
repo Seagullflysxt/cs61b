@@ -18,6 +18,12 @@ public class TestOffByOne {
         boolean actual3 = offByOne.equalChars('e','d');
         assertTrue(actual3);
 
+        boolean actual4 = offByOne.equalChars('e','E');
+        assertFalse(actual4);
+
+        boolean actual5 = offByOne.equalChars('\0','d');
+        assertFalse(actual5);
+
 
     }
 
