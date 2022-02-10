@@ -30,6 +30,11 @@ public class TestOffByOne {
         boolean actual7 = offByOne.equalChars('\0', '\0');
         assertFalse(actual7);
 
+        boolean actual8 = offByOne.equalChars('a', 'B');
+        assertFalse(actual8);
+
+
+
 
     }
 
