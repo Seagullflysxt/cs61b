@@ -28,7 +28,7 @@ public class TestOffByOne {
         assertTrue(actual6);
 
         boolean actual7 = offByOne.equalChars('\0', '\0');
-        assertTrue(actual7);
+        assertFalse(actual7);
 
 
     }
