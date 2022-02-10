@@ -33,6 +33,9 @@ public class Palindrome {
         }
         return false;*/
         while (d.size() > 1) {
+            /**return a && b:
+             * if a is true,return b;
+             * if a is false, return a*/
             return d.removeFirst() == d.removeLast() && isPalindrome(d);
         }
         return true;
