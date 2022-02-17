@@ -61,9 +61,6 @@ public class GuitarString {
     /* Return the double at the front of the buffer. */
     public double sample() {
         // DOWN: Return the correct thing.
-        if (buffer.isEmpty()) {
-            throw new RuntimeException("........");
-        }
         return buffer.peek();
     }
 }
