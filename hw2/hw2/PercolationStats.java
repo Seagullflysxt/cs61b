@@ -37,19 +37,17 @@ public class PercolationStats {
     }
     //sample mean of percolation threshold
     public double mean() {
-        return StdStats.mean(thresholds);
+        meanOfThresh = StdStats.mean(thresholds);
+        return meanOfThresh;
     }
     //sample standard deviation of percolation threshold
     public double stddev() {
-
-        return StdStats.stddev(thresholds);
+        devOfThresh = StdStats.stddev(thresholds);
+        return devOfThresh;
     }
 
     //low endpoint of 95% confidence interval
     public double confidenceLow() {
-        meanOfThresh = mean();
-        devOfThresh = stddev();
-
         return meanOfThresh
                 - (1.96 * devOfThresh) / (Math.sqrt(thresholds.length));
     }

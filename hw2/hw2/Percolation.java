@@ -35,7 +35,7 @@ public class Percolation {
     // open the site (row, col) if it is not open already
     public void open(int row, int col) {
         if (row < 0 || row > size - 1 || col < 0 || col > size - 1) {
-            throw new IllegalArgumentException();
+            throw new java.lang.IndexOutOfBoundsException();
         }
         if (grid[row][col]) {
             return;
@@ -74,7 +74,7 @@ public class Percolation {
     //is the site (row, col) open?
     public boolean isOpen(int row, int col) {
         if (row < 0 || row > size - 1 || col < 0 || col > size - 1) {
-            throw new IllegalArgumentException();
+            throw new java.lang.IndexOutOfBoundsException();
         }
         return grid[row][col];
     }
@@ -82,11 +82,11 @@ public class Percolation {
     //is the site (row, col) full?
     public boolean isFull(int row, int col) {
         if (row < 0 || row > size - 1 || col < 0 || col > size - 1) {
-            throw new IllegalArgumentException();
+            throw new java.lang.IndexOutOfBoundsException();
         }
         int meIndex = xyTo1D(row, col);
         //if using wqu, after the first full,all sites opend at bottom
-        //will be conneted to top that will lead to backwash.
+        //will be connected to top that will lead to backwash.
         return wqu2.connected(meIndex, vtTop);
     }
 
@@ -102,7 +102,7 @@ public class Percolation {
 
     private int xyTo1D(int row, int col) {
         if (row < 0 || row > size - 1 || col < 0 || col > size - 1) {
-            throw new IllegalArgumentException();
+            throw new java.lang.IndexOutOfBoundsException();
         }
         return size * row + col + 1;
     }
