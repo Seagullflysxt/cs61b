@@ -51,13 +51,13 @@ public class PercolationStats {
         devOfThresh = stddev();
 
         return meanOfThresh
-                - (1.96 * Math.sqrt(devOfThresh)) / (Math.sqrt(thresholds.length));
+                - (1.96 * devOfThresh) / (Math.sqrt(thresholds.length));
     }
 
     //high endpoint of 95% confidence interval
     public double confidenceHigh() {
         return meanOfThresh
-                + (1.96 * Math.sqrt(devOfThresh)) / (Math.sqrt(thresholds.length));
+                + (1.96 * devOfThresh) / (Math.sqrt(thresholds.length));
     }
 
 }

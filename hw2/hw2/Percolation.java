@@ -101,6 +101,9 @@ public class Percolation {
     }
 
     private int xyTo1D(int row, int col) {
+        if (row < 0 || row > size - 1 || col < 0 || col > size - 1) {
+            throw new IllegalArgumentException();
+        }
         return size * row + col + 1;
     }
 
