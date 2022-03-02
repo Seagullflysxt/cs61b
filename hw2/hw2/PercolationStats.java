@@ -7,16 +7,17 @@ import edu.princeton.cs.introcs.StdStats;
 public class PercolationStats {
 
     private Percolation P;
-    private double[] thresholds;
-    private double singleThreshold;
-    private double threshold;
-    private double meanOfThresh;
+    private final double[] thresholds;
+    //private double singleThreshold;
+    //private double threshold;
+    private double  meanOfThresh;
     private double devOfThresh;
 
 
     //perform T independent experiments on an N-by-N grid
     public PercolationStats(int N, int T, PercolationFactory pf) {
-
+        meanOfThresh = 0.0;
+        devOfThresh = 0.0;
         if (N <= 0 || T <= 0) {
             throw new IllegalArgumentException();
         }
@@ -29,11 +30,9 @@ public class PercolationStats {
                 P.open(randomRow, randomCol);
             }
             double opendSites = P.numberOfOpenSites();
-            singleThreshold = opendSites / (N * N);
+            double singleThreshold = opendSites / (N * N);
             thresholds[i] = singleThreshold;
         }
-
-
     }
     //sample mean of percolation threshold
     public double mean() {
