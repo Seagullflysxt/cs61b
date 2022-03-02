@@ -16,8 +16,7 @@ public class PercolationStats {
 
     //perform T independent experiments on an N-by-N grid
     public PercolationStats(int N, int T, PercolationFactory pf) {
-        meanOfThresh = 0.0;
-        devOfThresh = 0.0;
+
         if (N <= 0 || T <= 0) {
             throw new IllegalArgumentException();
         }
@@ -33,6 +32,8 @@ public class PercolationStats {
             double singleThreshold = opendSites / (N * N);
             thresholds[i] = singleThreshold;
         }
+        meanOfThresh = mean();
+        devOfThresh = stddev();
     }
     //sample mean of percolation threshold
     public double mean() {
