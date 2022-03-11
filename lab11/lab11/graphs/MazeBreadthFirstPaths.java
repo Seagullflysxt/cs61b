@@ -32,7 +32,8 @@ public class MazeBreadthFirstPaths extends MazeExplorer {
 
     /** Conducts a breadth first search of the maze starting at the source. */
     private void bfs(int v) {
-        // DONE: Your code here. Don't forget to update distTo, edgeTo, and marked, as well as call announce()
+        // DONE: Your code here.
+        // Don't forget to update distTo, edgeTo, and marked, as well as call announce()
         marked[v] = true;
         announce();
 
@@ -48,7 +49,7 @@ public class MazeBreadthFirstPaths extends MazeExplorer {
             if (!marked[w]) {
                 marked[w] = true;
                 q.add(w);
-                edgeTo[w] =v;
+                edgeTo[w] = v;
                 announce();
                 distTo[w] = distTo[v] + 1;
                 if (targetFound) {
