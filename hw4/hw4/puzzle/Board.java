@@ -101,7 +101,7 @@ public class Board implements WorldState {
                 int temp = board[i][j];
                 int rowOfTemp = (temp - 1) / size;
                 int colOfTemp = (temp - 1) % size;
-                int tempCnt = Math.abs((rowOfTemp + colOfTemp) - (i + j));
+                int tempCnt = Math.abs(rowOfTemp - i) + Math.abs(colOfTemp - j);
                 cnt += tempCnt;
             }
         }
