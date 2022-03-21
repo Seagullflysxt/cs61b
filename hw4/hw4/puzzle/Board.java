@@ -3,17 +3,17 @@ package hw4.puzzle;
 import edu.princeton.cs.algs4.Queue;
 
 public class Board implements WorldState {
-    int N;
-    int[][] board;
-    final int BLANK = 0;
+    private int size;
+    private int[][] board;
+    private final int BLANK = 0;
 
     /**Constructs a board from an N-by-N array of tiles where
      tiles[i][j] = tile at row i, column j*/
     public Board(int[][] tiles) {
-        N = tiles.length;
-        board = new int[N][N];
-        for (int i = 0; i < N; i += 1) {
-            System.arraycopy(tiles[i], 0, board[i], 0, N);
+        size = tiles.length;
+        board = new int[size][size];
+        for (int i = 0; i < size; i += 1) {
+            System.arraycopy(tiles[i], 0, board[i], 0, size);
         }
     }
     /**Returns value of tile at row i, column j (or 0 if blank)*/
@@ -25,86 +25,83 @@ public class Board implements WorldState {
     }
 
     private boolean validate(int i, int j) {
-        if (i < 0 || i > N - 1 || j < 0 || j > N - 1) {
+        if (i < 0 || i > size - 1 || j < 0 || j > size - 1) {
             return false;
         }
         return true;
     }
     /**Returns the board size N*/
     public int size() {
-        return N;
+        return size;
     }
     /**Returns the neighbors of the current board
      *
      * @author http://joshh.ug/neighbors.html*/
     public Iterable<WorldState> neighbors() {
         Queue<WorldState> neighbors = new Queue<>();
-        int[] blank = findBlank(board);
-        int row = blank[0];
-        int col = blank[1];
-        if (validate(row - 1, col)) {
-            neighbors.enqueue(new Board(swap(row - 1, col, row, col)));
-        }
-        if (validate(row + 1, col)) {
-            neighbors.enqueue(new Board(swap(row + 1, col, row, col)));
-        }
-        if (validate(row, col - 1)) {
-            neighbors.enqueue(new Board(swap(row, col - 1, row, col)));
-        }
-        if (validate(row, col + 1)) {
-            neighbors.enqueue(new Board(swap(row, col + 1, row, col)));
-        }
-
-
-        return neighbors;
-    }
-    private int[][] swap(int i, int j, int m, int n) {
-        int temp = board[i][j];
-        board[i][j] = board[m][n];
-        board[m][n] = temp;
-        return board;
-    }
-
-    private int[] findBlank(int[][] b) {
-        int[] toReture = new int[2];
-        for (int i = 0; i < b.length; i += 1) {
-            for (int j = 0; j < b.length; j += 1) {
-                if (b[i][j] == 0) {
-                    toReture[0] = i;
-                    toReture[1] = j;
+        int hug = size();
+        int bug = -1;
+        int zug = -1;
+        for (int rug = 0; rug < hug; rug++) {
+            for (int tug = 0; tug < hug; tug++) {
+                if (tileAt(rug, tug) == BLANK) {
+                    bug = rug;
+                    zug = tug;
                 }
             }
         }
-        return toReture;
+        int[][] ili1li1 = new int[hug][hug];
+        for (int pug = 0; pug < hug; pug++) {
+            for (int yug = 0; yug < hug; yug++) {
+                ili1li1[pug][yug] = tileAt(pug, yug);
+            }
+        }
+        for (int l11il = 0; l11il < hug; l11il++) {
+            for (int lil1il1 = 0; lil1il1 < hug; lil1il1++) {
+                if (Math.abs(-bug + l11il) + Math.abs(lil1il1 - zug) - 1 == 0) {
+                    ili1li1[bug][zug] = ili1li1[l11il][lil1il1];
+                    ili1li1[l11il][lil1il1] = BLANK;
+                    Board neighbor = new Board(ili1li1);
+                    neighbors.enqueue(neighbor);
+                    ili1li1[l11il][lil1il1] = ili1li1[bug][zug];
+                    ili1li1[bug][zug] = BLANK;
+                }
+            }
+        }
+        return neighbors;
     }
     /**Hamming estimate described below
      * The number of tiles in the wrong position.*/
     public int hamming() {
         int cnt = 0;
-        for (int i = 0; i < N; i += 1) {
-            for (int j = 0; j < N; j += 1) {
+        for (int i = 0; i < size; i += 1) {
+            for (int j = 0; j < size; j += 1) {
                 if (board[i][j] == 0) {
                     continue;
                 }
-                if (board[i][j] != i * N + 1 + j) {
+                if (board[i][j] != i * size + 1 + j) {
                     cnt += 1;
                 }
             }
         }
         return cnt;
     }
-    /**Manhattan estimate described below*/
+    /**Manhattan estimate described below
+     * The sum of the Manhattan distances
+     * (sum of the vertical and horizontal distance)
+     * from the tiles to their goal positions.
+     * Do not count 0.*/
     public int manhattan() {
         int cnt = 0;
-        for (int i = 0; i < N; i += 1) {
-            for (int j = 0; j < N; j += 1) {
+        for (int i = 0; i < size; i += 1) {
+            for (int j = 0; j < size; j += 1) {
                 if (board[i][j] == 0) {
                     continue;
                 }
                 int temp = board[i][j];
-                int rowOfTemp = (N * N - 1) / N;
-                int colOfTemp = (N - (N * N - 1) % N);
-                int tempCnt = (rowOfTemp + colOfTemp) - (i + j);
+                int rowOfTemp = temp / size;
+                int colOfTemp = (temp - 1) % size;
+                int tempCnt = Math.abs((rowOfTemp + colOfTemp) - (i + j));
                 cnt += tempCnt;
             }
         }
@@ -115,11 +112,13 @@ public class Board implements WorldState {
      Gradescope.*/
     public int estimatedDistanceToGoal() {
         return manhattan();
-
     }
     /**Returns true if this board's tile values are the same
      position as y's*/
     public boolean equals(Object y) {
+        if (y == null) {
+            return false;
+        }
         if (this == y) {
             return true;
         }
@@ -127,11 +126,11 @@ public class Board implements WorldState {
             return false;
         }
         Board bOfy = (Board) y;
-        if (bOfy.N != this.N) {
+        if (bOfy.size != this.size) {
             return false;
         }
-        for (int i = 0; i < N; i += 1) {
-            for (int j = 0; j < N; j += 1) {
+        for (int i = 0; i < size; i += 1) {
+            for (int j = 0; j < size; j += 1) {
                 if (board[i][j] !=  bOfy.board[i][j]) {
                     return false;
                 }
@@ -158,5 +157,4 @@ public class Board implements WorldState {
         s.append("\n");
         return s.toString();
     }
-
 }

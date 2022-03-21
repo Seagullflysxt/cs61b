@@ -3,11 +3,12 @@ package hw4.puzzle;
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Stack;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Comparator;
 
 public class Solver {
 
-    public class SearchNode {
+    private class SearchNode {
         WorldState thisWS;
         //the number of moves made to reach
         // this world state from the initial state.
@@ -15,19 +16,19 @@ public class Solver {
         //a reference to the previous search node.
         SearchNode preSN;
 
-        public SearchNode(WorldState ws, int moves, SearchNode preSN) {
+        SearchNode(WorldState ws, int moves, SearchNode preSN) {
             this.thisWS = ws;
             this.moves = moves;
             this.preSN = preSN;
         }
     }
-    int totalMoves = 0;
+    private int totalMoves = 0;
 
     //List<WorldState> listOfWorldState = new ArrayList<>();
-    Stack<WorldState> sol = new Stack<>();
+    private Stack<WorldState> sol = new Stack<>();
 
     //second optimization
-    HashMap<WorldState, Integer> edtGCaches = new HashMap<>();
+    private HashMap<WorldState, Integer> edtGCaches = new HashMap<>();
 
     /**
      * Constructor which solves the puzzle, computing
