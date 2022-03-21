@@ -99,7 +99,7 @@ public class Board implements WorldState {
                     continue;
                 }
                 int temp = board[i][j];
-                int rowOfTemp = temp / size;
+                int rowOfTemp = (temp - 1) / size;
                 int colOfTemp = (temp - 1) % size;
                 int tempCnt = Math.abs((rowOfTemp + colOfTemp) - (i + j));
                 cnt += tempCnt;
@@ -116,14 +116,11 @@ public class Board implements WorldState {
     /**Returns true if this board's tile values are the same
      position as y's*/
     public boolean equals(Object y) {
-        if (y == null) {
+        if (y == null || y.getClass() != this.getClass()) {
             return false;
         }
         if (this == y) {
             return true;
-        }
-        if (y.getClass() != this.getClass()) {
-            return false;
         }
         Board bOfy = (Board) y;
         if (bOfy.size != this.size) {
